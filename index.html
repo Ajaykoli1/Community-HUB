@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Event Organizer & Complaint System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div class="container" id="loginPage">
+        <h1>Login</h1>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter Username" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter Password" required>
+        <button onclick="login()">Login</button>
+        <p id="loginError" style="color: red; display: none;">Incorrect username or password!</p>
+    </div>
+
+    <!-- Action Selection Page -->
+    <div class="container hidden" id="actionPage">
+        <h1>Welcome Ajay</h1>
+        <h2>What would you like to do?</h2>
+        <button onclick="selectAction('event')">Register for an Event</button>
+        <button onclick="selectAction('complaint')">Submit a Complaint</button>
+    </div>
+
+    <!-- Event Form Page -->
+    <div class="container hidden" id="eventPage">
+        <h1>Community Event Organizer</h1>
+        <form id="eventForm">
+            <label for="eventTitle">Event Title</label>
+            <input type="text" id="eventTitle" required>
+            <label for="eventDate">Event Date</label>
+            <input type="date" id="eventDate" required>
+            <label for="eventTime">Event Time</label>
+            <input type="time" id="eventTime" required>
+            <label for="eventLocation">Event Location</label>
+            <input type="text" id="eventLocation" required>
+            <label for="eventDescription">Event Description</label>
+            <textarea id="eventDescription" rows="4" required></textarea>
+            <button type="submit">Add Event</button>
+        </form>
+        <div class="done-message hidden" id="eventDoneMessage">Event registration completed!</div>
+        <div class="event-list" id="eventList">
+            <h2>Upcoming Events</h2>
+        </div>
+        <button onclick="markDone('event')">Mark Event as Done</button>
+        <button class="back-button" onclick="goBack('action')">Go Back</button>
+    </div>
+
+    <!-- Complaint Form Page -->
+    <div class="container hidden" id="complaintPage">
+        <h1>Community Complaint Form</h1>
+        <form id="complaintForm">
+            <label for="complaintTitle">Complaint Title</label>
+            <input type="text" id="complaintTitle" required>
+            <label for="complaintDescription">Complaint Description</label>
+            <textarea id="complaintDescription" rows="4" required></textarea>
+            <label for="complaintPhoto">Upload a Photo (Optional)</label>
+            <input type="file" id="complaintPhoto" accept="image/*" onchange="previewImage(event)">
+            <img id="photoPreview" class="preview-image" alt="Image preview">
+            <button type="submit">Submit Complaint</button>
+        </form>
+        <div class="done-message hidden" id="complaintDoneMessage">Complaint submitted successfully!</div>
+        <div class="complaint-list" id="complaintList">
+            <h2>Submitted Complaints</h2>
+        </div>
+        <button onclick="markDone('complaint')">Mark Complaint as Done</button>
+        <button class="back-button" onclick="goBack('action')">Go Back</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
